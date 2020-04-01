@@ -5,15 +5,15 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
-name: Build_Newifi_D2
+name: Build_timecloud
 
 on: 
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 8 * * 5
@@ -68,9 +68,9 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
-    - name: Configuration Customization - Build_Newifi_D2
+    - name: Configuration Customization - Build_timecloud
       env:
-        CONFIG_FILE: 'Newifi_D2.config'
+        CONFIG_FILE: 'timecloud.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh
